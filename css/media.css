@@ -1,0 +1,309 @@
+@charset "UTF-8";
+
+/* PC버전 네비게이션 */
+@media(min-width:1020px){
+    .header{}
+    .header .logo{
+        float: left;
+        width: 184px;
+        height: 95px;
+        /*로고의 텍스트나 이미지 중앙에 배치, 중앙으로 하려는 영역 부모한테 주기*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .header .logo a img{width: 100%;}
+    
+    .header .nav{
+        float: right;
+    }
+    .header .nav>ul{}
+    .header .nav>ul>li{
+        float: left; 
+        width: 136px; 
+        padding: 35px 0;
+        position: relative;
+    }
+    .header .nav>ul>li:hover{
+        border-bottom: 2px solid #0d47a1;
+    }
+    .header .nav>ul>li:hover>a{
+        color: #0d47a1;
+    }
+    .header .nav>ul>li>a{
+        display: block;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+    }
+    .header .nav>ul>li>.submenu{
+        position: absolute;
+        top: 95px;
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        display: none;
+        border-left: 1px solid #ccc;;
+    }
+    .header .nav>ul>li>.submenu>li{}
+    .header .nav>ul>li:last-child>.submenu{
+        border-right: 1px solid #ccc;;
+    }
+    .header .nav>ul>li>.submenu>li:hover>a{
+        color: #0d47a1;
+        font-weight: bold;
+    }
+    .header .nav>ul>li>.submenu>li>a{
+        display: block;
+        padding: 15px 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    #nav_bg{
+        width: 100%;
+        height: 400px;
+        background-color: #fff;
+        position: absolute;
+        top: 95px;
+        left: 0;
+        z-index: 99;
+        display: none;
+    }
+}
+
+
+/* 기본적으로 잡아주는 px영역 */
+@media(max-width:1300px){.container{width: 100%;}}
+@media(max-width:1270px){
+    .banner .p2{padding-left: 10px;}
+    .banner .s2{padding-left: 10px;}
+    .banner .p3{display: none;}
+    .banner .s3{display: none;}
+}
+@media(max-width:1050px){
+    /* header */
+    .header .logo{height: 93px;}
+    .header .nav>ul>li{width: 120px;}
+    .header .nav>ul>li>a{font-size: 14px;}
+    .header .nav>ul>li>.submenu>li>a{font-size: 11px;}
+
+    /* banner */
+    .banner p{display: none;}
+    .banner strong{display: none;}
+
+    /* footer */
+    .footer .f_right01{right: 180px;}
+    .footer .f_right01 a{font-size: 10px; padding: 5px 5px;}
+}
+/* 햄버거메뉴 시작*/
+@media(max-width:1020px){
+    /* 햄버거메뉴 */
+    .header .logo{
+        width: 100%;
+        height: 95px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header .nav{
+        position: absolute;
+        top: 0;
+        right: -300px;
+        width: 250px;  
+        z-index: 999;
+        transition: all 0.5s;
+        height: 100vh;/*전체 다 쓰기 위함*/
+        background-color: #0d315b;
+    }
+    .header .nav.on{right: 0;}
+    .header .nav>ul{}
+    .header .nav>ul>li{width: 100%;}
+    .header .nav>ul>li>a{
+        width: 100%;
+        display: block;
+        padding: 15px 20px;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 16px;
+        position: relative;
+    }
+    .header .nav>ul>li>a::after{
+        content: "+";
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid;
+        transform: translateY(-50%);
+        text-align: center;
+        line-height: 20px;
+    }
+    .header .nav>ul>li.add>a::after{content: "-";}
+    .header .nav>ul>li>.submenu{display: none;}
+    .header .nav>ul>li>.submenu>li{}
+    .header .nav>ul>li>.submenu>li>a{
+        display: block;
+        background-color: #f0f0f0;
+        width: 100%;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: 0 1px 0 #cdd4dd;
+        padding: 13px 30px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+    }
+    .header .nav>ul>li>.submenu>li>a:hover{
+        background-color: #fff;
+        color: #000;
+        font-weight: bold;
+    }
+    .header #nav_bg{
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        z-index: 900;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 0;
+        left: 0;
+        display: none;
+    }
+    #barMenu{
+        width: 40px;
+        height: 30px;
+        position: absolute;
+        top: 25px;
+        right: 10px;
+        cursor: pointer;
+    }
+    #barMenu .bar{
+        width: 100%;
+        height: 5px;
+        border-radius: 10px;
+        background-color: #2206b3;
+        position: relative;
+    }
+    #barMenu .bar::after{
+        content: "";
+        position: absolute;
+        width: 70%;
+        height: 5px;
+        top: 13px;
+        right: 0;
+        background-color: #2206b3;
+        border-radius: 10px;
+    }
+    #barMenu .bar::before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        top: 26px;
+        right: 0;
+        background-color: #2206b3;
+        border-radius: 10px;
+    }
+    /* banner */
+    .banner img{width: 100%;}
+    .banner p{display: none;}
+    .banner strong{display: none;}
+    .banner .slick-prev{top: 180px;}
+    .banner .slick-next{top: 180px;}
+
+}
+@media(max-width:1010px){.footer .f_right01{display: none;}}
+@media(max-width:910px){
+    /* banner */
+    .banner .slick-prev{top: 150px;}
+    .banner .slick-next{top: 150px;}
+
+    /* footer */
+    .footer .f_left{
+        font-size: 10px;
+        padding: 30px 0px 0px 180px;
+    }
+    .footer .f_menu{margin-left: 180px;}
+    .footer .f_menu a{font-size: 10px; padding: 3px;}
+    .footer .f_right02{top: 49px; right: 80px;}
+}
+@media(max-width:830px){
+    /* banner */
+    .banner .slick-prev{top: 130px;}
+    .banner .slick-next{top: 130px;}
+    .banner .slick-dots{bottom: 20px;}
+
+    /* footer */
+    .footer .f_logo{padding: 33px 0px 0px 250px;}
+    .footer .f_left{display: none;}
+    .footer .f_menu{display: none;}
+    .footer .f_right02{top: 35px; right: 250px;}
+}
+@media(max-width:770px){
+    .footer .f_right02{display: none;}
+    .footer .f_logo{padding: 33px 0px 0px 315px;}
+}
+@media(max-width:750px){
+    /* banner */
+    .banner .slick-prev{top: 100px;}
+    .banner .slick-next{top: 100px;}
+    .banner .slick-dots li{width: 15px; height: 15px;}
+
+    /* footer */
+    .footer .f_logo{padding: 40px 0px 0px 50px;}
+}
+@media(max-width:610px){
+    /* banner */
+    .banner .slick-prev{top: 80px;}
+    .banner .slick-next{top: 80px;}
+
+    /* content1 */
+    .content1 .con1_text strong{font-size: 20px;}
+    .content1 .con1_text strong i{font-size: 20px;}
+    .content1 .con1_text p{font-size: 13px; line-height: 20px;}
+}
+@media(max-width:460px){
+    /* banner */
+    .banner .slick-prev{top: 60px;}
+    .banner .slick-next{top: 60px;}
+
+    /* content2 */
+    #content2 h2{padding: 30px 0 20px 0;}
+    #content2 h2 strong{font-size: 20px;}
+    #content2 h2 strong i{font-size: 20px;}
+    /* content3 */
+    #content3 h2{padding: 30px 0 20px 0;}
+    #content3 h2 strong{font-size: 20px;}
+    #content3 h2 strong i{font-size: 20px;}
+}
+@media(max-width:440px){
+     .content1 .con1_text strong{font-size: 15px;}
+     .content1 .con1_text strong i{font-size: 15px;}
+     .content1 .con1_text p{font-size: 11px; line-height: 20px;}
+
+    .content1 .con1_menu ul li{margin-right: 20px;}
+    .content1 .con1_menu ul li a img{
+        width: 50px;
+        height: 35px;
+    }
+    .content1 .con1_menu ul li a span{left: 17px; font-size: 12px;}
+}
+@media(max-width:370px){
+    /* content1 */
+    .content1{height: 250px;}
+    .content1 .con1_text strong{font-size: 12px;}
+    .content1 .con1_text strong i{font-size: 12px;}
+    .content1 .con1_text p{display: none;}
+
+   .content1 .con1_menu ul li{margin-right: 10px;}
+   .content1 .con1_menu ul li a img{width: 40px; height: 30px;}
+   .content1 .con1_menu ul li a span{left: 21px; font-size: 10px;}
+
+   
+    /* content2 */
+    #content2 h2 strong{font-size: 15px;}
+    #content2 h2 strong i{font-size: 15px;}
+    /* content3 */
+    #content3 h2 strong{font-size: 15px;}
+    #content3 h2 strong i{font-size: 15px;}
+}
